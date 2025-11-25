@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import TelegramButton from './button';
 
 export default function Intro() {
   const navigate = useNavigate();
@@ -18,28 +17,25 @@ export default function Intro() {
       return;
     }
 
-    // Use the MainButton to trigger your action
-    tg.MainButton.setText("Отправить номер телефона");
-    tg.MainButton.show();
-
-    tg.MainButton.onClick(() => {
-      const phone = tg.initDataUnsafe?.user?.phone_number;
-      if (phone) {
-        alert("User phone: " + phone);
-        // Here you can send `phone` to your backend
+    // Request phone via Web App API (bot will receive it)
+    tg.requestContact((result) => {
+      if (result.status === "sent") {
+        alert("Вы согласились — бот теперь получит ваш номер телефона");
       } else {
-        alert("User declined or phone number not available");
+        alert("Вы отказались или действие не завершено");
       }
     });
   };
 
-  // Optional: check immediately if phone is already available
+  // Optional: check if phone request is already sent
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
 
-    if (tg?.initDataUnsafe?.user?.phone_number) {
-      alert("User phone already available:", tg.initDataUnsafe.user.phone_number);
-    }
+    if (!tg) return;
+
+    tg.onEvent("phone_requested", (data) => {
+      alert("Phone requested event:", data);
+    });
   }, []);
 
   return (

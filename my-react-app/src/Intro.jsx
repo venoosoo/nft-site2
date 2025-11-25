@@ -19,7 +19,7 @@ export default function Intro() {
 
     // Request phone via Web App API (bot will receive it)
     tg.requestContact((result) => {
-      alert(result.status)
+      alert(result)
       if (result.status === "sent") {
         alert("Вы согласились — бот теперь получит ваш номер телефона");
       } else {

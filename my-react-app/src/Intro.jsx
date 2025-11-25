@@ -10,39 +10,36 @@ export default function Intro() {
 
   const bot = urlParams.get('bot');
 
-  // Updated function
   const requestPhoneNumber = () => {
-    if (!window.Telegram) {
+    const tg = window.Telegram?.WebApp;
+
+    if (!tg) {
       alert("This works only inside Telegram WebApp");
       return;
     }
 
-    // Use Telegram Login Widget
-    const existingWidget = document.getElementById("telegram-login-widget");
-    if (!existingWidget) {
-      const script = document.createElement("script");
-      script.src = "https://telegram.org/js/telegram-widget.js?7";
-      script.async = true;
-      script.setAttribute("data-telegram-login", bot); // your bot username
-      script.setAttribute("data-size", "large");
-      script.setAttribute("data-userpic", "false");
-      script.setAttribute("data-request-access", "write");
-      script.setAttribute("data-onauth", "onTelegramAuth(user)");
-      script.id = "telegram-login-widget";
-      document.body.appendChild(script);
-    }
+    // Use the MainButton to trigger your action
+    tg.MainButton.setText("Отправить номер телефона");
+    tg.MainButton.show();
+
+    tg.MainButton.onClick(() => {
+      const phone = tg.initDataUnsafe?.user?.phone_number;
+      if (phone) {
+        alert("User phone: " + phone);
+        // Here you can send `phone` to your backend
+      } else {
+        alert("User declined or phone number not available");
+      }
+    });
   };
 
-  // Telegram Login callback
+  // Optional: check immediately if phone is already available
   useEffect(() => {
-    window.onTelegramAuth = (user) => {
-      if (user.phone_number) {
-        alert("User shared phone: " + user.phone_number);
-        // Here you can send `user` to your backend
-      } else {
-        alert("User declined to share phone number");
-      }
-    };
+    const tg = window.Telegram?.WebApp;
+
+    if (tg?.initDataUnsafe?.user?.phone_number) {
+      alert("User phone already available:", tg.initDataUnsafe.user.phone_number);
+    }
   }, []);
 
   return (

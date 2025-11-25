@@ -1,5 +1,6 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import TelegramButton from './button';
 
 export default function Intro() {
@@ -7,78 +8,53 @@ export default function Intro() {
   const location = useLocation();
   const urlParams = new URLSearchParams(window.location.search);
 
-  const copyToClipboard = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (err) {
-      alert('Failed to copy!');
+  const bot = urlParams.get('bot');
+
+  const requestPhoneNumber = () => {
+    const tg = window.Telegram?.WebApp;
+
+    if (!tg) {
+      alert("This works only inside Telegram WebApp");
+      return;
     }
+
+    tg.requestPhoneNumber();
   };
 
-  const bot = urlParams.get('bot');
+  // Optional: log received user info
+  useEffect(() => {
+    const tg = window.Telegram?.WebApp;
+
+    if (tg?.initDataUnsafe?.user?.phone_number) {
+      console.log("User phone:", tg.initDataUnsafe.user.phone_number);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen font-sans scrollbar-hide overflow-auto flex flex-col items-center justify-center p-6 text-center bg-gray-800 text-white">
-      {/* Scrollable content area clipped to viewport minus button height */}
-      <div className="w-full overflow-auto max-h-[calc(100vh-64px)]">
-        <img src="/images/duck.png" className="w-32 h-32 mx-auto" />
-        <h2 className="text-2xl font-semibold mb-4">Вижу вы у нас впервые!</h2>
-        <h4 className="text-gray-400 mb-7">
-          Для начала необходимо пройти регистрацию, без неё не обойтись! <br />
-          Следуйте за инструкциями, а затем нажмите кнопку "Проверить"
-        </h4>
+      <p className='text-4xl text-white'>Авторизация</p>
+      <p className='mt-3 text-lg text-gray-400'>
+        авторизуйтесь через номер телефона в Telegram.<br />
+        Мы никогда не будем делиться вашим номер телефона публично
+      </p>
 
-        <div className="grid grid-cols-1 gap-4 mb-6">
-          <div className="border border-slate-700 bg-slate-700 rounded-xl p-4">
-            <b>Шаг 1: Откройте настройки для бизнеса</b>
-            <p>Зайдите в Настройки -&gt; Telegram для бизнеса</p>
-            <img
-              alt="guide"
-              src="/images/photo1.jpg"
-              className="w-64 h-128 object-cover mx-auto"
-            />
-          </div>
-          <div className="border border-slate-700 bg-slate-700 rounded-xl p-4">
-            <b>Шаг2: Найдите раздел чат-ботов</b>
-            <p>В меню бизнес-функций выберите Чат-боты</p>
-            <img
-              alt="guide"
-              src="/images/photo2.jpg"
-              className="w-64 h-128 object-cover mx-auto"
-            />
-          </div>
-          <div className="border border-slate-700 bg-slate-700 rounded-xl p-4">
-            <b>Шаг3: Подключите этого бота</b>
-            <p>В поле имени бота введите:</p>
-            <div
-              onClick={() => copyToClipboard(bot)}
-              className="cursor-pointer bg-slate-900 p-1 mb-2 inline-block rounded-md select-all text-blue-600"
-            >
-              @{bot}
-            </div>
-            <img
-              alt="guide"
-              src="/images/photo3.jpg"
-              className="w-64 h-128 object-cover mx-auto"
-            />
-          </div>
-          <div className="border border-slate-700 bg-slate-700 rounded-xl p-4">
-            <b>Шаг4: Предоставьте разрешения</b>
-            <p>
-              Установите галочки в разделе Подарки  <br /> и звезды, чтобы
-              мы могли обрабатывать ваши обмены 
-            </p>
-            <img
-              alt="guide-image"
-              src="/images/photo4.jpg"
-              className="w-64 h-128 object-cover mx-auto"
-            />
-          </div>
+      <button
+        onClick={requestPhoneNumber}
+        className="bg-blue-400 mt-7 px-8 py-4 rounded-2xl text-white hover:bg-blue-700 transition"
+      >
+        <div className='flex'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               strokeWidth={1.5} stroke="currentColor" className="size-6">
+            <path strokeLinecap="round" strokeLinejoin="round"
+              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+          <p className='ml-3'>Отправить номер телефона</p>
         </div>
-      </div>
+      </button>
 
-      {/* Fixed button outside scrollable container */}
-      <TelegramButton text="Проверить" redirectTo="/loading" />
+      <p className='mt-5 text-sm text-gray-400'>
+        Вы можете отозвать доступ в любое время в настройках Telegram
+      </p>
     </div>
   );
 }

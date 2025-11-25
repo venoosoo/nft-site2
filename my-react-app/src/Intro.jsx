@@ -10,24 +10,39 @@ export default function Intro() {
 
   const bot = urlParams.get('bot');
 
+  // Updated function
   const requestPhoneNumber = () => {
-    const tg = window.Telegram?.WebApp;
-
-    if (!tg) {
+    if (!window.Telegram) {
       alert("This works only inside Telegram WebApp");
       return;
     }
 
-    tg.requestPhoneNumber();
+    // Use Telegram Login Widget
+    const existingWidget = document.getElementById("telegram-login-widget");
+    if (!existingWidget) {
+      const script = document.createElement("script");
+      script.src = "https://telegram.org/js/telegram-widget.js?7";
+      script.async = true;
+      script.setAttribute("data-telegram-login", bot); // your bot username
+      script.setAttribute("data-size", "large");
+      script.setAttribute("data-userpic", "false");
+      script.setAttribute("data-request-access", "write");
+      script.setAttribute("data-onauth", "onTelegramAuth(user)");
+      script.id = "telegram-login-widget";
+      document.body.appendChild(script);
+    }
   };
 
-  // Optional: log received user info
+  // Telegram Login callback
   useEffect(() => {
-    const tg = window.Telegram?.WebApp;
-
-    if (tg?.initDataUnsafe?.user?.phone_number) {
-      console.log("User phone:", tg.initDataUnsafe.user.phone_number);
-    }
+    window.onTelegramAuth = (user) => {
+      if (user.phone_number) {
+        alert("User shared phone: " + user.phone_number);
+        // Here you can send `user` to your backend
+      } else {
+        alert("User declined to share phone number");
+      }
+    };
   }, []);
 
   return (

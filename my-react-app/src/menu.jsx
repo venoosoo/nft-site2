@@ -47,9 +47,9 @@ export default function Menu() {
                 </button>
             </div>
         </div>
-        <div className="rounded-full items-center justify-center">
+        <div className=" items-center justify-center">
             {userPhoto ? (
-                <img src={userPhoto} alt="Telegram User" />
+                <img src={userPhoto} className="rounded-full" alt="Telegram User" />
             ) : (
                 <p>No profile picture available</p>
             )}

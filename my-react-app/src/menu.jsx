@@ -85,7 +85,7 @@ export default function Menu() {
         ))}
       </div>
 
-      <div className="flex items-center justify-center mb-2 ml-7">
+      <div className="flex items-center justify-center mb-2 ml-5">
         {userPhoto ? (
           <img
             src={userPhoto}

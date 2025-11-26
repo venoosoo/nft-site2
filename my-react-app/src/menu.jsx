@@ -33,7 +33,7 @@ export default function Menu() {
 
   return (
     <div className="fixed bottom-1 flex">
-      <div className="flex gap-10 mb-5 ml-3 px-12 bg-[#1D2532] py-2 rounded-[40px] outline outline-1 outline-gray-600">
+      <div className="flex gap-7 mb-2 ml-3 px-11 bg-[#1D2532] py-2 rounded-[40px] outline outline-1 outline-gray-600">
         {tabs.map((tab, index) => (
           <div key={index} className="flex flex-col items-center justify-center">
             <button
@@ -45,8 +45,8 @@ export default function Menu() {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
-                stroke={activeTab === tab.path ? "blue" : "currentColor"} // highlight active
-                className="w-5 h-5"
+                stroke={activeTab === tab.path ? "#1A75DD" : "currentColor"} // highlight active
+                className="w-6 h-6"
               >
                 {/* You can customize the path for each icon */}
                 {index === 0 && (
@@ -75,7 +75,7 @@ export default function Menu() {
               </svg>
               <p
                 className={`text-[10px] ml-1 ${
-                  activeTab === tab.path ? "text-blue-600" : "text-white"
+                  activeTab === tab.path ? "text-[#1A75DD]" : "text-white"
                 }`}
               >
                 {tab.name}
@@ -85,15 +85,15 @@ export default function Menu() {
         ))}
       </div>
 
-      <div className="flex items-center justify-center mb-5">
+      <div className="flex items-center justify-center mb-2 ml-7">
         {userPhoto ? (
           <img
             src={userPhoto}
-            className="rounded-full w-[60%] items-center justify-center flex"
+            className="rounded-full w-[60%] items-center justify-center flex "
             alt="Telegram User"
           />
         ) : (
-          <img className="rounded-full w-[60%] items-center justify-center flex" src={myImage} />
+          <img className="rounded-full h-[60px] w-[60px] items-center justify-center flex" src={myImage} />
         )}
       </div>
     </div>

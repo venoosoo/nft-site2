@@ -33,7 +33,7 @@ export default function Menu() {
 
   return (
     <div className="fixed bottom-1 flex">
-      <div className="flex gap-9 mb-5 ml-5 px-6 bg-[#1D2532] py-2 rounded-[40px] outline outline-1 outline-gray-600">
+      <div className="flex gap-10 mb-5 ml-3 px-12 bg-[#1D2532] py-2 rounded-[40px] outline outline-1 outline-gray-600">
         {tabs.map((tab, index) => (
           <div key={index} className="flex flex-col items-center justify-center">
             <button
@@ -46,7 +46,7 @@ export default function Menu() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke={activeTab === tab.path ? "blue" : "currentColor"} // highlight active
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 {/* You can customize the path for each icon */}
                 {index === 0 && (
@@ -89,11 +89,11 @@ export default function Menu() {
         {userPhoto ? (
           <img
             src={userPhoto}
-            className="rounded-full w-[30%] items-center justify-center flex"
+            className="rounded-full w-[40%] items-center justify-center flex"
             alt="Telegram User"
           />
         ) : (
-          <p>no tg</p>
+          <img className="rounded-full w-[60%] items-center justify-center flex" src={myImage} />
         )}
       </div>
     </div>

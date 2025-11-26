@@ -33,7 +33,7 @@ export default function Menu() {
 
   return (
     <div className="fixed bottom-1 flex">
-      <div className="flex gap-5 mb-5 ml-5 px-6 bg-[#1D2532] py-2 rounded-[40px] outline outline-1 outline-gray-600">
+      <div className="flex gap-9 mb-5 ml-5 px-6 bg-[#1D2532] py-2 rounded-[40px] outline outline-1 outline-gray-600">
         {tabs.map((tab, index) => (
           <div key={index} className="flex flex-col items-center justify-center">
             <button
@@ -58,6 +58,7 @@ export default function Menu() {
                 )}
                 {index === 1 && (
                   <path
+                    fill=""
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
@@ -65,6 +66,7 @@ export default function Menu() {
                 )}
                 {index === 2 && (
                   <path
+                    fill="white"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"
@@ -72,7 +74,7 @@ export default function Menu() {
                 )}
               </svg>
               <p
-                className={`text-sm ml-1 ${
+                className={`text-[10px] ml-1 ${
                   activeTab === tab.path ? "text-blue-600" : "text-white"
                 }`}
               >
@@ -87,7 +89,7 @@ export default function Menu() {
         {userPhoto ? (
           <img
             src={userPhoto}
-            className="rounded-full w-[50%] items-center justify-center flex"
+            className="rounded-full w-[30%] items-center justify-center flex"
             alt="Telegram User"
           />
         ) : (

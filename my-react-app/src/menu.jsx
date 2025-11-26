@@ -47,11 +47,11 @@ export default function Menu() {
                 </button>
             </div>
         </div>
-        <div className="w-[60%] h-[60%] items-center justify-center">
+        <div className="flex items-center justify-center mb-5">
             {userPhoto ? (
-                <img src={userPhoto} className="rounded-full" alt="Telegram User" />
+                <img src={userPhoto} className="rounded-full w-[70%] h-[70%] items-center justify-center flex" alt="Telegram User" />
             ) : (
-                <p>No profile picture available</p>
+                <p>no tg</p>
             )}
         </div>
     </div>

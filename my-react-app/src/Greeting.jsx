@@ -41,7 +41,7 @@ export default function Greeting() {
           </div>
           <input className='text-white text-sm w-[50%] flex-1 bg-[#242E3A]' placeholder='Быстрый поиск' type='text'></input>
         </div>
-        <div className='ml-3 bg-[#242E3A] outline outline-2 outline-gray-700 px-4 text-sm py-2 rounded-3xl'>
+        <div className='ml-3 bg-[#242E3A] outline outline-2 outline-gray-700 px-4 text-slate-300 text-[12px] py-2 rounded-3xl'>
           <button className=''>
             Активность
           </button>
@@ -54,7 +54,7 @@ export default function Greeting() {
           </button>
         </div>
       </div>
-      <div className='ml-7 mt-4 flex items-center gap-2'>
+      <div className='ml-7 mt-4 flex items-center gap-3'>
         <div className=''>
           <button className='flex outline outline-2 outline-gray-700 p-2 mr-2 bg-[#242E3A] rounded-full'>
             <div className=''>
@@ -74,17 +74,17 @@ export default function Greeting() {
             </div>
           </button>
         </div>
-        <div className=' bg-[#242E3A] outline outline-2 outline-gray-700 px-3 text-sm py-2 rounded-3xl'>
+        <div className=' bg-[#242E3A] outline outline-2 outline-gray-700 px-3 text-[12px] text-slate-300 py-2 rounded-3xl'>
           <button className=''>
             Коллекция
           </button>
         </div>
-        <div className=' bg-[#242E3A] outline outline-2 outline-gray-700 px-3 text-sm py-2 rounded-3xl'>
+        <div className=' bg-[#242E3A] outline outline-2 outline-gray-700 px-3 text-[12px] text-slate-300 py-2 rounded-3xl'>
           <button className=''>
             Модель
           </button>
         </div>
-        <div className='bg-[#242E3A] outline outline-2 outline-gray-700 px-3 text-sm py-2 rounded-3xl'>
+        <div className='bg-[#242E3A] outline outline-2 outline-gray-700 px-3 text-[12px] text-slate-300 py-2 rounded-3xl'>
           <button className=''>
             Фон
           </button>

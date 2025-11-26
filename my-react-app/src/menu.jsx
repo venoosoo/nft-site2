@@ -88,11 +88,11 @@ export default function Menu() {
         {userPhoto ? (
           <img
             src={userPhoto}
-            className="rounded-full h-[60px] w-[60px] items-center justify-center flex"
+            className="rounded-full h-[55px] w-[55px] items-center justify-center flex"
             alt="Telegram User"
           />
         ) : (
-          <img className="rounded-full h-[60px] w-[60px] items-center justify-center flex" src={myImage} />
+          <img className="rounded-full h-[55px] w-[55px] items-center justify-center flex" src={myImage} />
         )}
       </div>
     </div>

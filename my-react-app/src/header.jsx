@@ -7,12 +7,12 @@ export default function Header() {
   return (
     <div className='border-b border-[#283440] bg-[#18212a] pl-5 pt-2 pb-3 flex items-center font-bold'>
         <div  className=' flex text-center items-center rounded-3xl mt-1 bg-[#4a3f20] pr-4'>
-            <div className='ml-3'>
+            <div className='ml-3 py-1'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#f1aa05" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#f1aa05" className="size-5 ">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259" />
                 </svg>
             </div> 
-            <p className='justify-center text-lg text-yellow-500'> 0 </p>
+            <p className='justify-center text-sm text-yellow-500'> 0 </p>
         </div>
         <div className='bg-[#037EFB] ml-auto px-4 py-1 flex mt-1 items-center rounded-3xl font-bold'>
             <div>

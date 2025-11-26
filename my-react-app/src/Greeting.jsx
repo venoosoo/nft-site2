@@ -39,7 +39,7 @@ export default function Greeting() {
               <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </div>
-          <input className='text-white text-sm w-[50%] flex-1 bg-[#242E3A]' placeholder='Быстрый поиск' type='text'></input>
+          <input className='text-white text-sm w-[50%] focus:outline-none focus:ring-0 flex-1 bg-[#242E3A]' placeholder='Быстрый поиск' type='text'></input>
         </div>
         <div className='ml-3 bg-[#242E3A] outline outline-2 outline-gray-700 px-4 text-slate-300 text-[12px] py-2 rounded-3xl'>
           <button className=''>

@@ -47,7 +47,7 @@ export default function Menu() {
                 </button>
             </div>
         </div>
-        <div className=" items-center justify-center">
+        <div className="w-[60%] h-[60%] items-center justify-center">
             {userPhoto ? (
                 <img src={userPhoto} className="rounded-full" alt="Telegram User" />
             ) : (

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Header from './header';
 import Card from './card';
-
+import Menu from './menu';
 
 function getRandomInt(min, max) {
   // min and max are inclusive
@@ -93,18 +93,15 @@ export default function Greeting() {
       <div className='ml-3 mr-4 grid grid-cols-2'>
         <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
         <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
-        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,5000)} />
+        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
 
       </div>
+      <Menu />
     </div>
   );
 }

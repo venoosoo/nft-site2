@@ -62,7 +62,7 @@ export default function Card(collection) {
                 <h1 className="text-sm ml-2 text-gray-400">#{data.id}</h1>
             </div>
             <div className="flex pb-3">
-                <div className="ml-2 mt-4 bg-[#0080FF] w-[60%] rounded-3xl px-1 flex items-center"> 
+                <div className="ml-2 mt-4 bg-[#0080FF] w-[60%] rounded-3xl px-1 flex items-center justify-center"> 
                     <button className="ml-3 text-sm">
                         85
                     </button>

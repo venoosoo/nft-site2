@@ -130,14 +130,16 @@ export default function Greeting() {
         </div>
       </div>
       <div className='ml-3 mr-4 grid grid-cols-2'>
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
-        <Card text="59"  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
+        <Card  collection={collections[getRandomInt(0,6)]} nft_id={getRandomInt(1,3000)} />
 
       </div>
       <Menu />

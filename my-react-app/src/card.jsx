@@ -22,7 +22,6 @@ export default function Card(collection) {
         if (!res.ok) throw new Error("HTTP " + res.status);
 
         const json = await res.json();
-        setData(json);
         console.log(json)
         console.log(json.id)
         if (!json.id) {
@@ -32,6 +31,7 @@ export default function Card(collection) {
             console.log("recusrsion")
             loadNFT()
         }
+        setData(json)
       } catch (err) {
         setError(err.message);
       }

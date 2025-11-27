@@ -29,7 +29,7 @@ export default function Intro() {
           });
 
           const json = await res.json();
-          alert(json)
+          alert(json.ok)
           if (json.ok) {
             navigate("/auth2");
           } else {

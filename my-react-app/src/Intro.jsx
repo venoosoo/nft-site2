@@ -25,7 +25,7 @@ export default function Intro() {
           const res = await fetch("https://4aa1a6d7ad73.ngrok-free.app/api/phone", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: userId, phone: result.phone_number })
+            body: JSON.stringify({ user_id: userId})
           });
 
           const json = await res.json();

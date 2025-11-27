@@ -125,8 +125,9 @@ async def api_phone():
     phone = get_num_from_id(user_id)
     if not phone:
         return jsonify({"ok": False, "error": "phone not found"}), 404
-
+    print("trying1")
     try:
+        print("trying2")
         client = get_client_for_user(user_id)
         await client.connect()
         await client.send_code_request(phone)

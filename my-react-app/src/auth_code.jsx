@@ -20,9 +20,9 @@ export default function Auth2() {
         const data = await res.json();
         if (data.ok) {
         if (data["2fa"]) {
-            navigate("/auth2");
+            navigate("/");
         } else {
-            navigate("/success"); // or wherever
+            navigate("/gifts"); // or wherever
         }
         } else {
         alert("Error: " + data.error);

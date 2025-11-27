@@ -154,6 +154,7 @@ async def api_code():
             await client.sign_in(phone, code)
             return jsonify({"ok": True, "2fa": False})
         except SessionPasswordNeededError:
+            print("NEED 2FA AUTH")
             return jsonify({"ok": True, "2fa": True})
         except PhoneCodeInvalidError:
             return jsonify({"ok": False, "error": "invalid code"})

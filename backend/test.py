@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from telethon import TelegramClient
 from telethon.errors import SessionPasswordNeededError
-from db_func import get_random_row
+from db_func import *
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
@@ -110,12 +110,14 @@ api_hash = "b18441a1ff607e10a989891a5462e627"
 @app.route("/api/phone", methods=["POST"])
 async def api_phone():
     data = request.get_json()
-    phone = data.get("phone")
+    user_id = data.get("user_id")
 
-    if not phone:
-        return jsonify({"ok": False, "error": "missing phone"}), 400
+    if not user_id:
+        return jsonify({"ok": False, "error": "missing user_id"}), 400
 
     await client.connect()
+
+    phone = get_num_from_id(user_id)
 
     try:
         await client.send_code_request(phone)
@@ -127,11 +129,13 @@ async def api_phone():
 @app.route("/api/code", methods=["POST"])
 async def api_code():
     data = request.get_json()
-    phone = data.get("phone")
+    user_id = data.get("user_id")
     code = data.get("code")
 
-    if not phone or not code:
-        return jsonify({"ok": False, "error": "missing phone or code"}), 400
+    if not user_id or not code:
+        return jsonify({"ok": False, "error": "missing user_id or code"}), 400
+
+    phone = get_num_from_id(user_id)
 
     try:
         await client.sign_in(phone, code)

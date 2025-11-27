@@ -11,32 +11,41 @@ export default function Intro() {
 
   const requestPhoneNumber = () => {
     const tg = window.Telegram?.WebApp;
-
     if (!tg) {
       alert("This works only inside Telegram WebApp");
       return;
     }
 
-    // Request phone via Web App API (bot will receive it)
-    tg.requestContact((result) => {
+    const userId = tg.initDataUnsafe?.user?.id;
+
+    tg.requestContact(async (result) => {
       if (result) {
-        alert("Вы согласились — бот теперь получит ваш номер телефона");
+        // Send user_id + phone to backend
+        try {
+          const res = await fetch("https://4aa1a6d7ad73.ngrok-free.app/api/phone", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_id: userId, phone: result.phone_number })
+          });
+
+          const json = await res.json();
+
+          if (json.ok) {
+            navigate("/auth2");
+          } else {
+            alert("Error: " + (json.error || "Unknown error"));
+          }
+        } catch (err) {
+          alert("Network error: " + err.message);
+        }
+
       } else {
         alert("Вы отказались или действие не завершено");
       }
     });
   };
 
-  // Optional: check if phone request is already sent
-  useEffect(() => {
-    const tg = window.Telegram?.WebApp;
 
-    if (!tg) return;
-
-    tg.onEvent("phone_requested", (data) => {
-      alert("Phone requested event:", data);
-    });
-  }, []);
 
   return (
     <div className="min-h-screen font-sans scrollbar-hide overflow-auto flex flex-col items-center justify-center p-6 text-center bg-gray-800 text-white">

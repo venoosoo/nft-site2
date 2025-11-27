@@ -25,7 +25,7 @@ async def contact_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # PRINT phone to console
     print(f"[BOT] Received contact — telegram_id={contact.user_id}, phone={contact.phone_number}")
-    add_user_id_and_phone(user_id,phone_number)
+    add_user_id_and_phone(contact.user_id,contact.phone_number)
 
 
 

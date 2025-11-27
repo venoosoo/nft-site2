@@ -50,7 +50,8 @@ export default function Auth2() {
     }
 
     if (newCode.every(digit => digit !== "")) {
-      handleSubmitCode()
+        alert("requesting")
+        handleSubmitCode()
     }
   };
 

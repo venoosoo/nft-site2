@@ -9,6 +9,7 @@ export default function Auth2() {
 
 
   const handleSubmitCode = async () => {
+    alert("fetching1")
     const userId = tg.initDataUnsafe?.user?.id;
     try {
         const res = await fetch("https://08f77fecc2d9.ngrok-free.app/api/code", {
@@ -16,7 +17,7 @@ export default function Auth2() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, code: newCode.join("") })
         });
-
+        alert("fetching2")
         const data = await res.json();
         alert(data.ok, data["2fa"])
         if (data.ok) {
@@ -51,7 +52,6 @@ export default function Auth2() {
     }
 
     if (newCode.every(digit => digit !== "")) {
-        alert("requesting")
         handleSubmitCode()
     }
   };

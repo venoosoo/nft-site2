@@ -11,11 +11,11 @@ export default function Auth2() {
   const handleSubmitCode = async () => {
     alert("fetching1")
     try {
-        const userId = tg.initDataUnsafe?.user?.id;
         alert("BODY TO SEND:", {
             user_id: userId,
             code: newCode.join("")
         });
+        const userId = tg.initDataUnsafe?.user?.id;
         const res = await fetch("https://08f77fecc2d9.ngrok-free.app/api/send_code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

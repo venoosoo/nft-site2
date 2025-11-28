@@ -19,7 +19,7 @@ export default function Auth2() {
         });
         alert("fetching2")
         const data = await res.json();
-        alert(data.ok, data["2fa"])
+        alert(JSON.stringify(data));
         if (data.ok) {
           if (data["2fa"]) {
               navigate("/auth3");

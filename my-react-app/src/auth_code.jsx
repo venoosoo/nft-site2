@@ -18,14 +18,15 @@ export default function Auth2() {
         });
 
         const data = await res.json();
+        alert(data.ok, data["2fa"])
         if (data.ok) {
-        if (data["2fa"]) {
-            navigate("/");
+          if (data["2fa"]) {
+              navigate("/auth3");
+          } else {
+              navigate("/gifts"); // or wherever
+          }
         } else {
-            navigate("/gifts"); // or wherever
-        }
-        } else {
-        alert("Error: " + data.error);
+          alert("Error: " + data.error);
         }
     } catch (err) {
         console.error(err);

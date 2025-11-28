@@ -149,8 +149,10 @@ async def api_phone():
         return jsonify({"ok": False, "error": str(e)}), 400
 
 
-@app.route("/api/code", methods=["POST"])
+@app.route("/api/send_code", methods=["POST", "OPTIONS"])
 async def api_code():
+    if request.method == "OPTIONS":
+        return {}, 200
     data = await request.get_json()
     user_id = data.get("user_id")
     code = data.get("code")

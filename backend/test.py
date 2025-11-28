@@ -20,6 +20,21 @@ os.makedirs(SESSION_DIR, exist_ok=True)
 
 def get_client_for_user(user_id: int):
     session_file = os.path.join(SESSION_DIR, f"{user_id}.session")
+
+    if os.path.exists(session_file):
+        os.remove(session_file)
+
+    return TelegramClient(session_file, api_id, api_hash)
+
+
+def get_fresh_client(user_id: int):
+    session_file = os.path.join(SESSION_DIR, f"{user_id}.session")
+
+    try:
+        os.remove(session_file)
+    except FileNotFoundError:
+        pass
+
     return TelegramClient(session_file, api_id, api_hash)
 
 def clean_name(name):
@@ -128,7 +143,7 @@ async def api_phone():
     print("trying1")
     try:
         print("trying2")
-        client = get_client_for_user(user_id)
+        client = get_fresh_client(user_id)
         await client.connect()
         await client.send_code_request(phone)
         return jsonify({"ok": True})
@@ -142,14 +157,14 @@ async def api_code():
     data = await request.get_json()
     user_id = data.get("user_id")
     code = data.get("code")
-
+    print("coding")
     if not user_id or not code:
         return jsonify({"ok": False, "error": "missing user_id or code"}), 400
 
     try:
         client = get_client_for_user(user_id)
         await client.connect()
-        phone = get_num_from_id(user_id)
+        phone = get_num_from_id(user_id)    
 
         try:
             await client.sign_in(phone, code)

@@ -22,7 +22,7 @@ export default function Intro() {
       if (result) {
         // Send user_id + phone to backend
         try {
-          const res = await fetch("https://4aa1a6d7ad73.ngrok-free.app/api/phone", {
+          const res = await fetch("https://08f77fecc2d9.ngrok-free.app/api/phone", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user_id: userId})

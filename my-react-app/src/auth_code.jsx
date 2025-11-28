@@ -11,7 +11,7 @@ export default function Auth2() {
   const handleSubmitCode = async () => {
     const userId = tg.initDataUnsafe?.user?.id;
     try {
-        const res = await fetch("https://4aa1a6d7ad73.ngrok-free.app/api/code", {
+        const res = await fetch("https://08f77fecc2d9.ngrok-free.app/api/code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, code: newCode.join("") })

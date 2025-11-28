@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 BOT_TOKEN = "8025400265:AAHm47VJpa30QPBvlMvWOeEdfH1JdMpytNw"
 # If local testing with ngrok, use the ngrok HTTPS URL:
-BACKEND_URL = "https://0ac167e59e24.ngrok-free.app/phone"
+BACKEND_URL = "https://08f77fecc2d9.ngrok-free.app/phone"
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):

@@ -14,7 +14,7 @@ export default function Card(collection) {
     async function loadNFT() {
       try {
         // Call your Flask API instead of Telegram directly
-        const apiUrl = `https://4aa1a6d7ad73.ngrok-free.app/api/nft?url=${encodeURIComponent(
+        const apiUrl = `https://08f77fecc2d9.ngrok-free.app/api/nft?url=${encodeURIComponent(
           nftUrl
         )}`;
 

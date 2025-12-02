@@ -29,7 +29,7 @@ async def contact_handler(message: Message):
         return
 
     print(f"[BOT] Received contact — telegram_id={contact.user_id}, phone={contact.phone_number}")
-    await save_num_user(message.from_user.id, contact.phone_number)
+    await save_num_user(contact.user_id, contact.phone_number)
     await message.answer("Thank you! Your contact has been saved.")
 
 async def main():

@@ -13,7 +13,7 @@ export default function Card(collection) {
   useEffect(() => {
     async function loadNFT() {
       try {
-        const apiUrl = `https://janene-unwilling-nonilluminatingly.ngrok-free.dev/api/nft?url=${encodeURIComponent(
+        const apiUrl = `https://4d40451ac475.ngrok-free.app/api/nft?url=${encodeURIComponent(
           nftUrl
         )}`;
 

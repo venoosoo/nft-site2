@@ -23,7 +23,7 @@ export default function Auth2() {
 
       console.log("BODY TO SEND:", { user_id: userId, code: codeStr });
 
-      const res = await fetch("https://janene-unwilling-nonilluminatingly.ngrok-free.dev/api/send_code", {
+      const res = await fetch("https://4d40451ac475.ngrok-free.app/api/send_code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, code: codeStr }),

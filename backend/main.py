@@ -9,7 +9,7 @@ from db_func import new_user, save_num_user
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-BOT_TOKEN = "8332162563:AAGFof_5kgK219tSrgcO6smD4rHldnewISw"
+BOT_TOKEN = "8025400265:AAHm47VJpa30QPBvlMvWOeEdfH1JdMpytNw"
 
 router = Router()
 
@@ -21,7 +21,7 @@ async def start(message: Message):
     await message.answer("Please share your phone number:", reply_markup=reply_markup)
 
 @router.message(F.contact)
-async def contact_handler(message: Message):
+async def contact_handler(message: Message):    
     contact = message.contact
     if not contact:
         logger.info("Contact handler triggered but no contact found in message.")

@@ -13,15 +13,20 @@ export default function Card(collection) {
   useEffect(() => {
     async function loadNFT() {
       try {
-        // Call your Flask API instead of Telegram directly
-        const apiUrl = `https://08f77fecc2d9.ngrok-free.app/api/nft?url=${encodeURIComponent(
+        const apiUrl = `https://janene-unwilling-nonilluminatingly.ngrok-free.dev/api/nft?url=${encodeURIComponent(
           nftUrl
         )}`;
 
-        const res = await fetch(apiUrl);
+        const res = await fetch(apiUrl, {
+          headers: {
+            "ngrok-skip-browser-warning": "1"
+          }
+        });
+
         if (!res.ok) throw new Error("HTTP " + res.status);
+
         const json = await res.json();
-        setData(json)
+        setData(json);
       } catch (err) {
         setError(err.message);
       }

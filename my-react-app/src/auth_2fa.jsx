@@ -22,7 +22,7 @@ export default function Auth2FA() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://08f77fecc2d9.ngrok-free.app/api/2fa", {
+      const res = await fetch("https://janene-unwilling-nonilluminatingly.ngrok-free.dev/api/2fa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

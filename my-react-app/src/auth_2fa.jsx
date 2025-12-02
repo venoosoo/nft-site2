@@ -53,10 +53,10 @@ export default function Auth2FA() {
       </p>
 
       <input
-        type="text"
+        type="password"
         className="mt-6 px-6 py-3 rounded-xl bg-gray-700 text-white text-center text-xl outline-none"
         placeholder="Код"
-        maxLength={6}
+        maxLength={35}
         value={code}
         onChange={(e) => setCode(e.target.value)}
       />
